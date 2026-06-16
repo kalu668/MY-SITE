@@ -54,6 +54,18 @@ class CustomUserAdmin(UserAdmin):
     readonly_fields = ['date_joined', 'last_login', 'referral_code', 'two_fa_secret', 
                        'last_activity', 'failed_login_attempts', 'locked_until']
     
+    actions = ['lock_account', 'unlock_account']
+    
+    def lock_account(self, request, queryset):
+        queryset.update(is_active=False)
+        self.message_user(request, f'{queryset.count()} accounts locked.')
+    lock_account.short_description = 'Lock selected accounts'
+    
+    def unlock_account(self, request, queryset):
+        queryset.update(is_active=True)
+        self.message_user(request, f'{queryset.count()} accounts unlocked.')
+    unlock_account.short_description = 'Unlock selected accounts'
+
     def balance_display(self, obj):
         try:
             balance = float(obj.balance or 0)
