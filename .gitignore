@@ -60,3 +60,5 @@ celerybeat.pid
 
 id_ed25519_agwu662
 id_ed25519_agwu662.pub
+.cache/
+.local/bin/
