@@ -93,3 +93,11 @@ my site
 gemini
 exit
 gemini
+apt list --upgradable
+apt upgrade all
+sudo apt upgrade all
+sudo apt upgrade -all
+sudo apt update
+sudo apt upgrade -y
+npm update -g @google/generative-ai
+gemini
